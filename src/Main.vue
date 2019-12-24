@@ -1,33 +1,45 @@
 <template>
   <main class="main__image">
     <main-header @textSize="textSize" />
-    <section class="main__section">
-      <div class="section__box">
-        <h2 :class="`text_${fontSize} mb-8`">Lorem isum dolor sit amet</h2>
-        <div :class="`text_${fontSize} section__text`">
-          consectetur adipisicing elit. Sequi accusantium architecto esse
-          ducimus, autem harum quidem beatae nisi qui illo error aperiam rem
-          nostrum, vel impedit dolor sint aliquid modi.Eaque dolore quia
-          quibusdam autem suscipit excepturi consectetur, cum magnam laborum
-          exercitationem quam labore odit veritatis placeat sint mollitia vel
-          tempora error sit nemo earum! Voluptatum, reiciendis. Enim,
-          consequuntur perferendis?
+    <transition name="fade">
+      <section v-if="!nextPage" class="main__section">
+        <div class="section__box">
+          <h2 :class="`text_${fontSize} mb-8`">Lorem isum dolor sit amet</h2>
+          <div :class="`text_${fontSize} section__text`">
+            consectetur adipisicing elit. Sequi accusantium architecto esse
+            ducimus, autem harum quidem beatae nisi qui illo error aperiam rem
+            nostrum, vel impedit dolor sint aliquid modi.Eaque dolore quia
+            quibusdam autem suscipit excepturi consectetur, cum magnam laborum
+            exercitationem quam labore odit veritatis placeat sint mollitia vel
+            tempora error sit nemo earum! Voluptatum, reiciendis. Enim,
+            consequuntur perferendis?
+          </div>
+          <button
+            @click="nextPage = true"
+            :class="`text_${fontSize} section__button mt-8`"
+          >Lorem ipsum dolor</button>
         </div>
-        <button :class="`text_${fontSize} section__button mt-8`">Lorem ipsum dolor</button>
-      </div>
-    </section>
+      </section>
+    </transition>
+    <transition name="fade">
+      <movies @click="nextPage = false" v-if="nextPage" />
+    </transition>
   </main>
 </template>
 
 <script>
 import MainHeader from "./components/Header";
+import Movies from "./views/Movies";
+
 export default {
   components: {
-    MainHeader
+    MainHeader,
+    Movies
   },
 
   data: () => ({
-    fontSize: "medium"
+    fontSize: "medium",
+    nextPage: false
   }),
 
   methods: {
@@ -43,6 +55,14 @@ export default {
 </script>
 
 <style lang="scss" scope>
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s;
+}
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
+}
 .main__section {
   color: white;
   display: flex;
