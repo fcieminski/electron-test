@@ -7,8 +7,14 @@
   .mr-#{$margin} {
     margin-right: #{2 * $margin}px;
   }
+  .pr-#{$margin} {
+    padding-right: #{2 * $margin}px;
+  }
   .ml-#{$margin} {
     margin-left: #{2 * $margin}px;
+  }
+  .pl-#{$margin} {
+    padding-left: #{2 * $margin}px;
   }
   .m-#{$margin} {
     margin: #{2 * $margin}px;
