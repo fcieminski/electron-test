@@ -1,0 +1,26 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+@for $margin from 1 to 10 {
+  .mr-#{$margin} {
+    margin-right: #{2 * $margin}px;
+  }
+  .ml-#{$margin} {
+    margin-left: #{2 * $margin}px;
+  }
+  .m-#{$margin} {
+    margin: #{2 * $margin}px;
+  }
+  .mt-#{$margin} {
+    margin-top: #{2 * $margin}px;
+  }
+  .mb-#{$margin} {
+    margin-bottom: #{2 * $margin}px;
+  }
+}
+
+.d-flex {
+  display: flex;
+}
